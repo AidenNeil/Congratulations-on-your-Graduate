@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Congratulations!</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #89CFF0, #20B2AA);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 2;
+      width: 90%;
+      max-width: 600px;
+      margin: 20px;
+    }
+
+    @keyframes rainbowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Segoe UI', sans-serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      text-transform: uppercase;
+      margin: 0;
+      color: transparent;
+      background: linear-gradient(270deg, #f70000, #f89200, #f8f501, #038f00, #0168f8, #a200f7);
+      background-size: 1000% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: rainbowText 8s ease infinite;
+    }
+
+    p {
+      font-size: clamp(1rem, 4vw, 1.2rem);
+      margin-top: 10px;
+      color: #333;
+      padding: 0 10px;
+    }
+
+    .button {
+      margin-top: 30px;
+      padding: clamp(10px, 3vw, 15px) clamp(20px, 5vw, 30px);
+      background-color: #008B8B;
+      color: white;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #006666;
+      transform: scale(1.05);
+    }
+
+    .button:active {
+      transform: scale(0.95);
+    }
+
+    .flower {
+      position: absolute;
+      width: clamp(30px, 8vw, 60px);
+      height: clamp(30px, 8vw, 60px);
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: float 10s infinite linear;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0.6;
+      }
+    }
+
+    /* Media Queries */
+    @media (max-width: 480px) {
+      .container {
+        padding: 15px;
+        margin: 15px;
+      }
+
+      .button {
+        width: 80%;
+        max-width: 200px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 30px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container {
+        padding: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎓 Heyy Johanna</h1>
+    <p>Wishing you a future full of success, joy, and endless opportunities. 🌸</p>
+    <button class="button" onclick="startGame()">Open</button>
+  </div>
+
+  <script>
+    const images = [
+      'images/red-heart-shape-icon.png',
+      'images/light-star.png'
+    ];
+
+    for (let i = 0; i < 20; i++) {
+      const flower = document.createElement('div');
+      flower.className = 'flower';
+      flower.style.left = Math.random() * 100 + 'vw';
+      flower.style.top = Math.random() * 100 + 'vh';
+      flower.style.backgroundImage = `url('${images[Math.floor(Math.random() * images.length)]}')`;
+      flower.style.animationDuration = (Math.random() * 10 + 5) + 's';
+      flower.style.opacity = Math.random() * 0.5 + 0.5;
+      document.body.appendChild(flower);
+    }
+
+    function startGame() {
+      window.location.href = "game.html";
+    }
+  </script>
+</body>
+</html>
